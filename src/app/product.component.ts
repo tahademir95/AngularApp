@@ -12,7 +12,20 @@ import { Product } from './product.model';
 })
 export class ProductComponent {
     model: ProductRepository = new ProductRepository();
+    disabled = false;
 
+    getClasses(id: number): string {
+        let product = this.model.getProductById(id);
+        return (product.price <= 3000 ? "bg-info": "bg-secondary") + " m-2 p-2";    //product ın ücreti 3000 den küçükse bg-info, değilse bg-secondary
+    }
 
-    product: Product = this.model.getProductById(1);
+    getClassMap(id: number): Object{
+        let product = this.model.getProductById(id);
+        return{
+            "bg-info": product.price <= 3000,
+            "bg-secondary": product.price > 3000,
+            "text-center text-white": product.name == "Samsung Note5"
+        }
+    }
+    
 }
