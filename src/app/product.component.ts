@@ -13,6 +13,8 @@ import { Product } from './product.model';
 export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = false;
+    color:string = this.model.getProductById(1).price > 3000 ? "red" : "green";
+    fontWeight: string = "bold";
 
     getClasses(id: number): string {
         let product = this.model.getProductById(id);
@@ -25,6 +27,14 @@ export class ProductComponent {
             "bg-info": product.price <= 3000,
             "bg-secondary": product.price > 3000,
             "text-center text-white": product.name == "Samsung Note5"
+        }
+    }
+
+    getStyles(id: number) {
+        let product = this.model.getProductById(id);
+        return {
+            fontSize: "25px",
+            color: product.price <=3000 ? "green" : "red"
         }
     }
     

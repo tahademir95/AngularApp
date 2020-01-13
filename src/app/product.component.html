@@ -16,9 +16,9 @@
 
 <h2>Burda div e bazı class lar eklenmiş, ben ekstradan bazı koşullara göre yeni class eklemek istersem</h2>
 <div class="m-2 p-2" [ngClass]="getClassMap(1)">
-    Katalogdaki ilk ürün {{ model.getProductById(1).name }}
+    Katalogdaki <span [style.color]="color">ilk ürün</span> {{ model.getProductById(1).name }}
 </div>
-
+<h3>Eğer birden fazla style(font-size, color, ...) eklemek istiyorsan ngStyle kullanılır</h3>
 <div class="m-2 p-2" [ngClass]="getClassMap(2)">
-    Katalogdaki ikinci ürün {{ model.getProductById(2).name }}
+    Katalogdaki <span [ngStyle]="getStyles(2)">ikinci ürün </span> {{ model.getProductById(2).name }}
 </div>
