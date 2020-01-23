@@ -12,30 +12,30 @@ import { Product } from './product.model';
 })
 export class ProductComponent {
     model: ProductRepository = new ProductRepository();
-    disabled = false;
-    color:string = this.model.getProductById(1).price > 3000 ? "red" : "green";
-    fontWeight: string = "bold";
-
-    getClasses(id: number): string {
-        let product = this.model.getProductById(id);
-        return (product.price <= 3000 ? "bg-info": "bg-secondary") + " m-2 p-2";    //product ın ücreti 3000 den küçükse bg-info, değilse bg-secondary
+    
+    onSubmit($event){
+        $event.stopPropagation();       //butonlar div içinde olduğu için, butona tıklandığında div de tıklanmış oluyor, bu onu engelliyor
+        console.log('button is clicked');
+        console.log($event);
+    }
+    onDivClicked(){
+        console.log('div is clicked');
     }
 
-    getClassMap(id: number): Object{
-        let product = this.model.getProductById(id);
-        return{
-            "bg-info": product.price <= 3000,
-            "bg-secondary": product.price > 3000,
-            "text-center text-white": product.name == "Samsung Note5"
+    onKeyUp($event){
+
+        console.log($event.target.value);
+
+        if($event.keyCode === 13){
+            console.log("enter was pressed");
+        }
+        else if($event.keyCode === 32){
+            console.log("space was pressed");
         }
     }
 
-    getStyles(id: number) {
-        let product = this.model.getProductById(id);
-        return {
-            fontSize: "25px",
-            color: product.price <=3000 ? "green" : "red"
-        }
+    onKeyUp2(email){
+        console.log(email);
     }
     
 }
