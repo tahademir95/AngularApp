@@ -1,0 +1,9 @@
+
+
+<div [hidden]="model.getProducts().length==0" >
+    There are {{ model.getProducts().length }} products in the repository
+</div>
+
+<div [hidden]="model.getProducts().length!=0" >
+    There are {{ model.getProducts().length }} products in the repository
+</div>
