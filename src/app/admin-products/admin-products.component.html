@@ -17,9 +17,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let product of products" 
-                            (mouseover)="selectedProducts=product.name" 
-                            (mouseleave)="selectedProducts='(None)'"
-                            [class.bg-info]="getSelected(product)"
+                            (mouseover)="pName.value=product.name" 
+                            (mouseleave)="pName.value='(None)'"
+                            [class.bg-info]="pName.value==product.name"
                             >
                             <td>{{ product.id }}</td>
                             <td>
@@ -39,7 +39,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Product name</label>
-                <input type="text" class="form-control" (input)="selectedProducts=$event.target.value">
+                <input type="text" class="form-control" (keyup.enter)="selectedProducts=pName.value" #pName>
             </div>
         </div>
     </div>
