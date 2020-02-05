@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductRepository } from '../repository.model';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'admin-products',
@@ -11,10 +12,15 @@ export class AdminProductsComponent {
 
   products;
   model: ProductRepository;
+  selectedProducts:string;
 
   constructor() { 
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
+  }
+
+  getSelected(product:Product):boolean{
+    return product.name == this.selectedProducts;
   }
 
   
